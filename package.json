@@ -1,0 +1,26 @@
+{
+    "name": "docconverter",
+    "version": "1.0.0",
+    "main": "server.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.mjs",
+        "dev": "nodemon server.mjs -e mjs,js,hbs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "bootstrap": "^5.2.1",
+        "express": "^4.18.1",
+        "hbs": "^4.2.0",
+        "mongoose": "^6.6.1",
+        "bcrypt": "^5.0.0",
+        "cookie-parser": "^1.4.5",
+        "express-session": "^1.17.1",
+        "morgan": "^1.10.0"
+    
+    }
+}

@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #0c0e11, #0b141f);
+    color: white;
+}
+
+.logo,
+.links>a,
+.logo:hover,
+.links>a:hover {
+    background: -webkit-linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
+    background: linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+}
+.links>a:hover{
+    border-bottom: 1px solid rgb(43, 153, 255);
+}
+.tokenInput {
+    background: transparent;
+
+    color: #00a2ff;
+    border: solid 3px transparent;
+    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(43, 153, 255)0%, rgb(255, 0, 128) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
+
+}
+
+.tokenLable {
+    background: -webkit-linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
+    background: linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.tokenInput:focus {
+    background: transparent;
+    color: #00a2ff;
+    border: solid 3px transparent;
+    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
+
+}
+
+.start-btn {
+    position: relative;
+    top: 1em;
+    left: 30%;
+    width: 40%;
+    /* padding: 1.5em 3.3em; */
+    text-transform: uppercase;
+    font: 800 2rem Arial;
+    border-radius: 16px;
+    border: solid 3px transparent;
+    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgba(117, 43, 255, 1)0%, rgba(0, 212, 255, 1) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
+    color: #fff;
+}
+
+.styled-btn {
+    padding: 38px 65px;
+    margin: 0px 20px;
+    text-transform: uppercase;
+    font: 800 2rem Arial;
+    border-radius: 8px;
+    border: solid 3px transparent;
+    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
+    color: #fff;
+}
+
+.styled-btn-div {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+}
+
+.start-btn:hover {
+    /* padding: 1.5em 3.3em; */
+    text-transform: uppercase;
+    font: 800 2rem Arial;
+    border-radius: 16px;
+    border: solid 3px transparent;
+    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
+    color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+
+    .start-btn,
+    .start-btn:hover {
+        font: 800 1.14rem Arial;
+    }
+
+}

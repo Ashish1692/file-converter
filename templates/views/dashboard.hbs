@@ -1,0 +1,37 @@
+{{> header}}
+<div id="nav" class="bg-transparent border-bottom">
+	<nav class="navbar bg-transparent container">
+		<div class="container-fluid">
+			<a class="navbar-brand logo">FileFormatConverter</a>
+			<div class="d-flex links">
+				<a class="nav-link me-4" aria-current="page" href="/login">Home</a>
+				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
+			</div>
+		</div>
+	</nav>
+</div>
+<div class="container">
+	<div class="d-flex p-2">
+		<select class="form-select" aria-label="Default select example">
+			{{!-- <option selected>Open this select menu</option> --}}
+			<option value="1">PDF</option>
+			<option value="2">DOCX</option>
+			<option value="3">IMAGE</option>
+		</select>
+		<span class="text-light mx-3">To</span>
+		<select class="form-select" aria-label="Default select example">
+			{{!-- <option selected>Open this select menu</option> --}}
+			<option value="2">DOCX</option>
+			<option value="1">PDF</option>
+			<option value="3">TXT</option>
+		</select>
+	</div>
+	<form action="/convert">
+		<div class="input-group mb-3">
+			<input type="file" class="form-control" id="inputGroupFile02">
+			{{!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> --}}
+		</div>
+		<button type="submit" class="btn btn-outline-primary">Convert</button>
+	</form>
+</div>
+{{> foot}}

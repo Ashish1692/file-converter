@@ -1,0 +1,58 @@
+{{> header}}
+    <nav class="navbar navbar-expand-lg text-white bg-transparent border-bottom">
+        <div class="container-fluid mx-5 text-white">
+            <a class="navbar-brand logo fs-4" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item links">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link" href="/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link " href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item links">
+                        <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link" href="/logout">Log Out</a>
+                    </li>
+                   
+                </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+<form class="row g-3 container position-absolute top-50 start-50 translate-middle form-floating mb-3 w-75" action="/signup" method="post">
+  <div class="col-md-12">
+    <label for="inputEmail4" class=" fs-5 tokenLable">Username:</label>
+    <input type="text" class="form-control fs-3 p-2 tokenInput" name="username" id="inputEmail4">
+  </div>
+  <div class="col-md-12">
+    <label for="inputEmail4" class=" fs-5 tokenLable">Email:</label>
+    <input type="email" class="form-control fs-3 p-2 tokenInput" name="email" id="inputEmail4">
+  </div>
+  <div class="col-md-12">
+    <label for="inputPassword4" class="fs-5  tokenLable">Password</label>
+    <input type="password" class="form-control p-2 fs-3  tokenInput" name="password" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="start-btn btn-lg py-3">Sign Up</button>
+  </div>
+</form>
+
+
+{{> foot}}
