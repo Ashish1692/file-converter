@@ -1,0 +1,34 @@
+{{> header title="PPTX To PDF Converter"}}
+<div id="nav" class="bg-transparent border-bottom">
+	<nav class="navbar bg-transparent container">
+		<div class="container-fluid">
+			<a class="navbar-brand logo">FileFormatConverter</a>
+			<div class="d-flex links">
+                <a class="nav-link me-4" aria-current="page" href="/doctopdf">DOCX TO PDF</a>
+                <a class="nav-link me-4" aria-current="page" href="/sheetTopdf">XLSX TO PDF</a>
+				
+				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<div class="container  position-absolute top-50 start-50 translate-middle">
+          <h1 class="text-center">
+              PPTX to PDF Converter
+          </h1>
+
+          <form action="/pptxtopdf" method="post" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+                <input type="file" name="file" id="" required class="form-control">
+            </div>
+            <div class="form-group d-flex justify-content-center align-items-center flex-column">
+                <button class="btn btn-success btn-block">
+                    Convert to PDF
+                </button>
+            </div>
+        </form>
+      </div>
+      <!-- ********************************************* -->
+
+{{> foot}}

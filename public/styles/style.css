@@ -5,16 +5,18 @@
 }
 
 body {
-    background: linear-gradient(to right, #0c0e11, #0b141f);
+    /*background: linear-gradient(to right, #0c0e11, #0b141f);*/
+    background: #011f44;
     color: white;
 }
 
 .logo,
 .links>a,
 .logo:hover,
-.links>a:hover {
+.links>a:hover,span {
     background: -webkit-linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
     background: linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
+    background: #ffce4e;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

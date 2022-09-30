@@ -2,12 +2,23 @@ import express from 'express';
 const app = express();
 import { join } from 'path';
 import hbs from 'hbs';
+import url from 'path'
 import bodyParser from 'body-parser'
 import cookieParser  from "cookie-parser";
 import session  from "express-session";
 import morgan  from "morgan";
 
-const port = process.env.PORT || 3000;
+ 
+import libre  from 'libreoffice-convert'
+ 
+import fs  from 'fs'
+import path  from 'path'
+ 
+var outputFilePath;
+ 
+import multer  from 'multer'
+
+const port = process.env.PORT || 3100;
 
 import './src/dbConn.mjs';
 import userModel from './src/dbSchema.mjs';
@@ -15,7 +26,7 @@ import userModel from './src/dbSchema.mjs';
 
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
     session({
         key: "user_sid",
@@ -60,7 +71,7 @@ let sessionChecker = (req, res, next) => {
 
 // route for Home-Page
 app.get("/", sessionChecker, (req, res) => {
-    res.render("login");
+    res.redirect("/login");
 });
 
 
@@ -101,15 +112,22 @@ app
         try {
             var user = await userModel.findOne({ username: username }).exec();
             if (!user) {
-                res.redirect("/login");
+                // res.redirect("/login");
+                res.render('login',{msg: "Incorrect Username"})
+                console.log("wrong username")
             }
             user.comparePassword(password, (error, match) => {
                 if (!match) {
                     res.redirect("/login");
+                    console.log("wrong password")
+                    
                 }
             });
             req.session.user = user;
-            res.redirect("/dashboard");
+            res.redirect('/dashboard')
+            console.log('SUCCESS')
+
+            
 
         } catch (error) {
             console.log(error)
@@ -119,6 +137,7 @@ app
 
 // route for user's dashboard
 app.get("/dashboard", (req, res) => {
+
     if (req.session.user && req.cookies.user_sid) {
         res.render("dashboard");
     } else {
@@ -138,7 +157,228 @@ app.get("/logout", (req, res) => {
 
 app.get('/index',(req,res)=>{
     res.render('index')
+});
+
+app.get('/doctopdf',(req,res)=>{
+    res.render('doctopdf')
 })
+
+
+// *************************************************************************************************
+ 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+ 
+ 
+app.get('/pptxtopdf',(req,res) => {
+  res.render('pptxtopdf')
+})
+ 
+const pptxtopdf = function (req, file, callback) {
+  var ext = path.extname(file.originalname);
+  if (
+    ext !== ".docx" &&
+    ext !== ".doc"
+
+  ) {
+    return callback("This Extension is not supported");
+  }
+  callback(null, true);
+};
+ 
+const pptxtopdfupload = multer({storage:storage,fileFilter:pptxtopdf})
+ 
+ 
+app.post('/pptxtopdf',pptxtopdfupload.single('file'),(req,res) => {
+  if(req.file){
+    console.log(req.file.path)
+ 
+    const file = fs.readFileSync(req.file.path);
+ 
+    outputFilePath = Date.now() + "output.pdf"
+
+ 
+    libre.convert(file,".pdf",undefined,(err,done) => {
+      if(err){
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in conversion process")
+      }
+ 
+      fs.writeFileSync(outputFilePath, done);
+
+ 
+      res.download(outputFilePath,(err) => {
+        if(err){
+          fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in downloading the file")
+        }
+ 
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+      })
+        
+
+    })
+  }
+})
+ // *********************************************************************************
+
+var storage1 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+ 
+ 
+app.get('/doctopdf',(req,res) => {
+  res.render('doctopdf')
+})
+ 
+const docxtopdf = function (req,file, callback) {
+  var ext = path.extname(file.originalname);
+  if (
+
+    ext !== ".docx" &&
+    ext !== ".doc"
+
+  ) {
+    return callback("This Extension is not supported");
+  }
+  callback(null, true);
+};
+ 
+const docxtopdfupload = multer({storage:storage,fileFilter:docxtopdf})
+ 
+ 
+app.post('/doctopdf',docxtopdfupload.single('file'),(req,res) => {
+  if(req.file){
+    console.log(req.file.path)
+ 
+    const file = fs.readFileSync(req.file.path);
+ 
+    outputFilePath = Date.now() + "output.pdf"
+
+ 
+    libre.convert(file,".pdf",undefined,(err,done) => {
+      if(err){
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in conversion process")
+      }
+ 
+      fs.writeFileSync(outputFilePath, done);
+
+ 
+      res.download(outputFilePath,(err) => {
+        if(err){
+          fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in downloading the file")
+        }
+ 
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+      })
+        
+
+    })
+  }
+})
+// **********************************************************************************
+
+
+// *************************************************************************************************
+ 
+var storage2 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+ 
+ 
+app.get('/sheetTopdf',(req,res) => {
+  res.render('sheetTopdf')
+})
+ 
+const sheetTopdf = function (req, file, callback) {
+  var ext = path.extname(file.originalname);
+  if (
+    ext !== ".docx" &&
+    ext !== ".doc"
+
+  ) {
+    return callback("This Extension is not supported");
+  }
+  callback(null, true);
+};
+ 
+const sheetToPdfupload = multer({storage:storage,fileFilter:sheetTopdf})
+ 
+ 
+app.post('/sheetTopdf',sheetToPdfupload.single('file'),(req,res) => {
+  if(req.file){
+    console.log(req.file.path)
+ 
+    const file = fs.readFileSync(req.file.path);
+ 
+    outputFilePath = Date.now() + "output.pdf"
+
+ 
+    libre.convert(file,".pdf",undefined,(err,done) => {
+      if(err){
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in conversion process")
+      }
+ 
+      fs.writeFileSync(outputFilePath, done);
+
+ 
+      res.download(outputFilePath,(err) => {
+        if(err){
+          fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+ 
+        res.send("some error taken place in downloading the file")
+        }
+ 
+        fs.unlinkSync(req.file.path)
+        fs.unlinkSync(outputFilePath)
+      })
+        
+
+    })
+  }
+})
+ // *********************************************************************************
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 })
