@@ -1,0 +1,44 @@
+{{> header title="Database Data"}}
+<div id="nav" class="bg-transparent border-bottom">
+	<nav class="navbar bg-transparent container">
+		<div class="container-fluid">
+			<a class="navbar-brand logo">FileFormatConverter</a>
+			<div class="d-flex links">
+				
+				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<div class="col-sm-8 mt-5 container">
+            <h2 class="alert alert-success text-center">List of Data: </h2>
+            <table class="table text-white border">
+                <thead class="border">
+                    <tr class="border">
+                        
+                        <th class="border text-success" scope="col">USERNAME</th>
+                        <th class="border text-success" scope="col">EMAIL</th>
+                        <th class="border text-success" scope="col">PASSWORD</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-white border">
+                    {{#each data}}
+                    <tr class="border">
+                        
+                        <td class="border">{{username}}</td>
+                        <td class="border text-info">{{email}}</td>
+                        <td class="border text-danger" >{{password}}</td>
+                        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+      <!-- ********************************************* -->
+
+                       <script src="javascript/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

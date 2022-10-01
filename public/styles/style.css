@@ -26,6 +26,9 @@ body {
 .links>a:hover{
     border-bottom: 1px solid rgb(43, 153, 255);
 }
+.data{
+    color: white;
+}
 .tokenInput {
     background: transparent;
 

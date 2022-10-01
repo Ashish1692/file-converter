@@ -18,7 +18,7 @@ var outputFilePath;
  
 import multer  from 'multer'
 
-const port = process.env.PORT || 3100;
+const port = process.env.PORT || 5500;
 
 import './src/dbConn.mjs';
 import userModel from './src/dbSchema.mjs';
@@ -135,6 +135,41 @@ app
     });
 
 
+
+
+app
+    .route("/databaselogin")
+    .get(sessionChecker, (req, res) => {
+        res.render('databaselogin');
+    })
+    .post(async (req, res) => {
+        var username = req.body.username,
+            password = req.body.password;
+
+        try {
+            var user = await userModel.findOne({ username: 'admin' }).exec();
+            if (!user) {
+                // res.redirect("/login");
+                res.render('databaselogin',{msg: "Incorrect Username"})
+                console.log("wrong username")
+            }
+            user.comparePassword(password, (error, match) => {
+                if (!match) {
+                    res.redirect("/databaselogin");
+                    console.log("wrong password")
+                    
+                }
+            });
+            req.session.user = user;
+            res.redirect('/database')
+            console.log('SUCCESS')
+
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+    });
 // route for user's dashboard
 app.get("/dashboard", (req, res) => {
 
@@ -163,17 +198,26 @@ app.get('/doctopdf',(req,res)=>{
     res.render('doctopdf')
 })
 
+app.get("/database", async (req, res) => {
+        try {
+            const result = await userModel.find()
+            res.render('database', { data: result });
+        } catch (error) {
+            console.log(error);
+        }
+
+    })
 
 // *************************************************************************************************
  
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads");
+    cb(null, "./public/uploads");
   },
   filename: function (req, file, cb) {
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + path.basename(file.originalname,path.extname(file.originalname)) + path.extname(file.originalname)
     );
   },
 });
@@ -185,6 +229,7 @@ app.get('/pptxtopdf',(req,res) => {
  
 const pptxtopdf = function (req, file, callback) {
   var ext = path.extname(file.originalname);
+  console.log("file"+path.resolve(file))
   if (
     ext !== ".docx" &&
     ext !== ".doc"
@@ -200,7 +245,7 @@ const pptxtopdfupload = multer({storage:storage,fileFilter:pptxtopdf})
  
 app.post('/pptxtopdf',pptxtopdfupload.single('file'),(req,res) => {
   if(req.file){
-    console.log(req.file.path)
+    console.log("filepath"+req.file.path)
  
     const file = fs.readFileSync(req.file.path);
  
@@ -243,7 +288,7 @@ var storage1 = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + path.basename(file.originalname,path.extname(file.originalname)) + path.extname(file.originalname)
     );
   },
 });
@@ -317,7 +362,7 @@ var storage2 = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + path.basename(file.originalname,path.extname(file.originalname)) + path.extname(file.originalname)
     );
   },
 });
@@ -379,6 +424,10 @@ app.post('/sheetTopdf',sheetToPdfupload.single('file'),(req,res) => {
   }
 })
  // *********************************************************************************
+
+
+
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 })
