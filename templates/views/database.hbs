@@ -4,8 +4,8 @@
 		<div class="container-fluid">
 			<a class="navbar-brand logo">FileFormatConverter</a>
 			<div class="d-flex links">
-				
-				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
+
+				<a class="nav-link text-danger me-4" aria-current="page" href="/logout">Log out</a>
 			</div>
 		</div>
 	</nav>
@@ -16,21 +16,19 @@
             <table class="table text-white border">
                 <thead class="border">
                     <tr class="border">
-                        
+
                         <th class="border text-success" scope="col">USERNAME</th>
                         <th class="border text-success" scope="col">EMAIL</th>
                         <th class="border text-success" scope="col">PASSWORD</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody class="text-white border">
                     {{#each data}}
                     <tr class="border">
-                        
-                        <td class="border">{{username}}</td>
+                        <td class="border text-dark">{{username}}</td>
                         <td class="border text-info">{{email}}</td>
                         <td class="border text-danger" >{{password}}</td>
-                        
                     </tr>
                     {{/each}}
                 </tbody>

@@ -1,26 +1,25 @@
 {{> header title="Register"}}
-    <nav class="navbar navbar-expand-lg text-white bg-transparent border-bottom">
+
+
+    <nav class="navbar navbar-expand-lg text-white bg-white border-bottom">
         <div class="container-fluid mx-5 text-white">
-            <a class="navbar-brand logo fs-4" href="#">File Format Converter</a>
+            <a class="navbar-brand logo fs-4 text-dark" href="/">FileFormatConverter</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon fs-3 text-dark"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item links">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link text-dark" aria-current="page" href="/">Home</a>
                     </li>
-                    
-                   
                 </ul>
                 <form class="d-flex">
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item links">
-                        <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+                        <a class="nav-link text-success" href="/login">Log in</a>
                     </li>
-                    
+
                 </ul>
                 </form>
             </div>
@@ -28,22 +27,21 @@
     </nav>
 
 
-
 <form class="row g-3 container position-absolute top-50 start-50 translate-middle form-floating mb-3 w-75" action="/signup" method="post">
   <div class="col-md-12">
-    <label for="inputEmail4" class=" fs-5 tokenLable">Username:</label>
-    <input type="text" class="form-control fs-3 p-2 tokenInput" name="username" id="inputEmail4">
+    <label for="inputEmail4" class=" fs-4 tokenLable">Username:</label>
+    <input type="text" class="form-control fs-4 p-2 input-btn tokenInput" placeholder="username" autocomplete="off" name="username" id="inputEmail4">
   </div>
   <div class="col-md-12">
-    <label for="inputEmail4" class=" fs-5 tokenLable">Email:</label>
-    <input type="email" class="form-control fs-3 p-2 tokenInput" name="email" id="inputEmail4">
+    <label for="inputEmail4" class=" fs-4 tokenLable">Email:</label>
+    <input type="email" class="form-control fs-4 p-2 input-btn tokenInput" placeholder="email" autocomplete="off" name="email" id="inputEmail4">
   </div>
   <div class="col-md-12">
-    <label for="inputPassword4" class="fs-5  tokenLable">Password</label>
-    <input type="password" class="form-control p-2 fs-3  tokenInput" name="password" id="inputPassword4">
+    <label for="inputPassword4" class="fs-4  tokenLable">Password</label>
+    <input type="password" class="form-control p-2 fs-4 input-btn  tokenInput" placeholder="password" name="password" id="inputPassword4">
   </div>
   <div class="col-12">
-    <button type="submit" class="start-btn btn-lg py-3">Sign Up</button>
+    <button type="submit" class="btn w-50 position-relative w-50 mt-4 top-50 start-btn start-50 translate-middle btn-primary py-3">Sign Up</button>
   </div>
 </form>
 

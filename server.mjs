@@ -8,14 +8,14 @@ import cookieParser  from "cookie-parser";
 import session  from "express-session";
 import morgan  from "morgan";
 
- 
+
 import libre  from 'libreoffice-convert'
- 
+
 import fs  from 'fs'
 import path  from 'path'
- 
+
 var outputFilePath;
- 
+
 import multer  from 'multer'
 
 const port = process.env.PORT || 5500;
@@ -106,7 +106,7 @@ app
         res.render('login');
     })
     .post(async (req, res) => {
-        var username = req.body.username,
+        let username = req.body.username,
             password = req.body.password;
 
         try {
@@ -120,14 +120,14 @@ app
                 if (!match) {
                     res.redirect("/login");
                     console.log("wrong password")
-                    
+
                 }
             });
             req.session.user = user;
             res.redirect('/dashboard')
             console.log('SUCCESS')
 
-            
+
 
         } catch (error) {
             console.log(error)
@@ -143,28 +143,27 @@ app
         res.render('databaselogin');
     })
     .post(async (req, res) => {
-        var username = req.body.username,
-            password = req.body.password;
+      let uname = req.body.username;
+            let password = req.body.password;
 
         try {
-            var user = await userModel.findOne({ username: 'admin' }).exec();
-            if (!user) {
-                // res.redirect("/login");
-                res.render('databaselogin',{msg: "Incorrect Username"})
-                console.log("wrong username")
+            var user1 = await userModel.findOne({ username: "admin" }).exec();
+            if (!user1) {
+                res.redirect("/databaselogin");
+
             }
-            user.comparePassword(password, (error, match) => {
+            user1.comparePassword(password, (error, match) => {
                 if (!match) {
                     res.redirect("/databaselogin");
                     console.log("wrong password")
-                    
+
                 }
             });
-            req.session.user = user;
+            req.session.user = user1;
             res.redirect('/database')
             console.log('SUCCESS')
 
-            
+
 
         } catch (error) {
             console.log(error)
@@ -209,7 +208,7 @@ app.get("/database", async (req, res) => {
     })
 
 // *************************************************************************************************
- 
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/uploads");
@@ -221,12 +220,12 @@ var storage = multer.diskStorage({
     );
   },
 });
- 
- 
+
+
 app.get('/pptxtopdf',(req,res) => {
   res.render('pptxtopdf')
 })
- 
+
 const pptxtopdf = function (req, file, callback) {
   var ext = path.extname(file.originalname);
   console.log("file"+path.resolve(file))
@@ -239,42 +238,42 @@ const pptxtopdf = function (req, file, callback) {
   }
   callback(null, true);
 };
- 
+
 const pptxtopdfupload = multer({storage:storage,fileFilter:pptxtopdf})
- 
- 
+
+
 app.post('/pptxtopdf',pptxtopdfupload.single('file'),(req,res) => {
   if(req.file){
     console.log("filepath"+req.file.path)
- 
+
     const file = fs.readFileSync(req.file.path);
- 
+
     outputFilePath = Date.now() + "output.pdf"
 
- 
+
     libre.convert(file,".pdf",undefined,(err,done) => {
       if(err){
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in conversion process")
       }
- 
+
       fs.writeFileSync(outputFilePath, done);
 
- 
+
       res.download(outputFilePath,(err) => {
         if(err){
           fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in downloading the file")
         }
- 
+
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
       })
-        
+
 
     })
   }
@@ -292,12 +291,12 @@ var storage1 = multer.diskStorage({
     );
   },
 });
- 
- 
+
+
 app.get('/doctopdf',(req,res) => {
   res.render('doctopdf')
 })
- 
+
 const docxtopdf = function (req,file, callback) {
   var ext = path.extname(file.originalname);
   if (
@@ -310,42 +309,42 @@ const docxtopdf = function (req,file, callback) {
   }
   callback(null, true);
 };
- 
+
 const docxtopdfupload = multer({storage:storage,fileFilter:docxtopdf})
- 
- 
+
+
 app.post('/doctopdf',docxtopdfupload.single('file'),(req,res) => {
   if(req.file){
     console.log(req.file.path)
- 
+
     const file = fs.readFileSync(req.file.path);
- 
+
     outputFilePath = Date.now() + "output.pdf"
 
- 
+
     libre.convert(file,".pdf",undefined,(err,done) => {
       if(err){
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in conversion process")
       }
- 
+
       fs.writeFileSync(outputFilePath, done);
 
- 
+
       res.download(outputFilePath,(err) => {
         if(err){
           fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in downloading the file")
         }
- 
+
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
       })
-        
+
 
     })
   }
@@ -354,7 +353,7 @@ app.post('/doctopdf',docxtopdfupload.single('file'),(req,res) => {
 
 
 // *************************************************************************************************
- 
+
 var storage2 = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads");
@@ -366,12 +365,12 @@ var storage2 = multer.diskStorage({
     );
   },
 });
- 
- 
+
+
 app.get('/sheetTopdf',(req,res) => {
   res.render('sheetTopdf')
 })
- 
+
 const sheetTopdf = function (req, file, callback) {
   var ext = path.extname(file.originalname);
   if (
@@ -383,42 +382,42 @@ const sheetTopdf = function (req, file, callback) {
   }
   callback(null, true);
 };
- 
+
 const sheetToPdfupload = multer({storage:storage,fileFilter:sheetTopdf})
- 
- 
+
+
 app.post('/sheetTopdf',sheetToPdfupload.single('file'),(req,res) => {
   if(req.file){
     console.log(req.file.path)
- 
+
     const file = fs.readFileSync(req.file.path);
- 
+
     outputFilePath = Date.now() + "output.pdf"
 
- 
+
     libre.convert(file,".pdf",undefined,(err,done) => {
       if(err){
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in conversion process")
       }
- 
+
       fs.writeFileSync(outputFilePath, done);
 
- 
+
       res.download(outputFilePath,(err) => {
         if(err){
           fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
- 
+
         res.send("some error taken place in downloading the file")
         }
- 
+
         fs.unlinkSync(req.file.path)
         fs.unlinkSync(outputFilePath)
       })
-        
+
 
     })
   }

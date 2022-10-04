@@ -1,18 +1,26 @@
 {{> header title="XLSX/CSV To PDV Converter"}}
-<div id="nav" class="bg-transparent border-bottom">
-	<nav class="navbar bg-transparent container">
-		<div class="container-fluid">
-			<a class="navbar-brand logo">FileFormatConverter</a>
-			<div class="d-flex links">
-                <a class="nav-link me-4" aria-current="page" href="/pptxtopdf">PPTX TO PDF</a>
-                <a class="nav-link me-4" aria-current="page" href="/doctopdf">DOCX TO PDF</a>
-				
-				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
-			</div>
-		</div>
-	</nav>
-</div>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid mx-5">
+    <a class="navbar-brand fs-4 text-dark">FileFormatConverter</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+         <a class="nav-link text-dark me-4" aria-current="page" href="/pptxtopdf">PPTX TO PDF</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link text-dark me-4" aria-current="page" href="/doctopdf">DOCX TO PDF</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <a class="nav-link text-danger me-4" aria-current="page" href="/logout">Log out</a>
+      </form>
+    </div>
+  </div>
+</nav>
 <div class="container  position-absolute top-50 start-50 translate-middle">
           <h1 class="text-center">
               CSV/XLSX to PDF Converter
@@ -20,10 +28,10 @@
 
           <form action="/sheetTopdf" method="post" enctype="multipart/form-data">
             <div class="form-group mb-4">
-                <input type="file" name="file" id="" required class="form-control">
+                <input type="file" name="file" id="" required class="form-control mt-5 border-info w-25 position-relative w-50 top-50 start-50 translate-middle input-btn">
             </div>
             <div class="form-group d-flex justify-content-center align-items-center flex-column">
-                <button class="btn btn-success btn-block">
+                <button class="btn btn-success btn-block myborder fs-3">
                     Convert to PDF
                 </button>
             </div>

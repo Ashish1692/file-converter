@@ -4,118 +4,34 @@
     box-sizing: border-box;
 }
 
+.myOrange{
+    color: rgb(255, 0, 128);
+}
 body {
-    /*background: linear-gradient(to right, #0c0e11, #0b141f);*/
-    background: #011f44;
     color: white;
+    background: linear-gradient(to right, #009ffd,#2a2a72);
+}
+.mycol {
+    color: #fbfeff;
+}
+.secCol{
+    background-color: #d4830a;
 }
 
-.logo,
-.links>a,
-.logo:hover,
-.links>a:hover,span {
-    background: -webkit-linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
-    background: linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
-    background: #ffce4e;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-
+.myborder{
+    box-shadow: 1px 10px 10px #07283b;
 }
-.links>a:hover{
-    border-bottom: 1px solid rgb(43, 153, 255);
+.myborder:hover{
+    box-shadow: 1px 10px 10px  #0c0c2c;
+    border: 4px outset;
 }
-.data{
-    color: white;
+.start-btn{
+    box-shadow: 1px 10px 10px #01141f;
 }
-.tokenInput {
-    background: transparent;
-
-    color: #00a2ff;
-    border: solid 3px transparent;
-    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(43, 153, 255)0%, rgb(255, 0, 128) 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
-
+.start-btn:hover{
+    box-shadow: 1px 10px 10px #05334e;
+    border: 3px outset;
 }
-
-.tokenLable {
-    background: -webkit-linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
-    background: linear-gradient(to right, rgb(43, 153, 255), rgb(255, 0, 128));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-.tokenInput:focus {
-    background: transparent;
-    color: #00a2ff;
-    border: solid 3px transparent;
-    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
-
-}
-
-.start-btn {
-    position: relative;
-    top: 1em;
-    left: 30%;
-    width: 40%;
-    /* padding: 1.5em 3.3em; */
-    text-transform: uppercase;
-    font: 800 2rem Arial;
-    border-radius: 16px;
-    border: solid 3px transparent;
-    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgba(117, 43, 255, 1)0%, rgba(0, 212, 255, 1) 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
-    color: #fff;
-}
-
-.styled-btn {
-    padding: 38px 65px;
-    margin: 0px 20px;
-    text-transform: uppercase;
-    font: 800 2rem Arial;
-    border-radius: 8px;
-    border: solid 3px transparent;
-    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
-    color: #fff;
-}
-
-.styled-btn-div {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-}
-
-.start-btn:hover {
-    /* padding: 1.5em 3.3em; */
-    text-transform: uppercase;
-    font: 800 2rem Arial;
-    border-radius: 16px;
-    border: solid 3px transparent;
-    background: linear-gradient(rgba(12, 14, 17), rgba(11, 20, 31)), linear-gradient(90deg, rgb(188, 43, 255)0%, rgb(0, 102, 255) 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px rgb(12, 14, 17) inset, 2px 1000px 1px rgb(11, 20, 31) inset;
-    color: #fff;
-}
-
-@media screen and (max-width: 800px) {
-
-    .start-btn,
-    .start-btn:hover {
-        font: 800 1.14rem Arial;
-    }
-
+.input-btn{
+    box-shadow: 1px 10px 10px #1f2427;
 }

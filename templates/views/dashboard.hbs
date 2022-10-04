@@ -1,34 +1,39 @@
 {{> header title="Dashboard"}}
-<div id="nav" class="bg-transparent border-bottom">
-	<nav class="navbar bg-transparent container">
-		<div class="container-fluid">
-			<a class="navbar-brand logo">FileFormatConverter</a>
-			<div class="d-flex links">
-				<a class="nav-link me-4" aria-current="page" href="/logout">Log out</a>
-				<a class="nav-link me-4" aria-current="page" href="/database">Database</a>
-			</div>
+
+<nav class="navbar navbar-expand-lg text-white bg-white	 border-bottom">
+	<div class="container-fluid mx-5 text-white">
+		<a class="navbar-brand logo fs-4 text-dark" href="/">FileFormatConverter</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon fs-3 text-dark"></span>
+		</button>
+		<div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+			<form class="d-flex">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item links">
+						<a class="nav-link text-danger me-4" aria-current="page" href="/logout">Log out</a>
+					</li>
+				</ul>
+			</form>
 		</div>
-	</nav>
-</div>
+	</div>
+</nav>
+<div
+	class="container d-flex flex-wrap gap-5 justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
 
-<div class="container d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
-<form action="/doctopdf">
-	
-<input type="submit" class="btn btn-primary fs-2 p-3 mx-3" value="DOC TO PDF"/>
-</form>
-
-<form action="/pptxtopdf">
-	
-<input type="submit" class="btn btn-success fs-2 p-3 mx-3" value="PPTX TO PDF"/>
-</form>
-
-<form action="/sheetTopdf">
-	
-<input type="submit" class="btn btn-info fs-2 p-3 mx-3" value="CSV/XLSX TO PDF"/>
-</form>
+	<form action="/pptxtopdf">
+		<input type="submit" class="btn myborder btn-orange fs-2 p-3 mx-3" value="PPTX TO PDF" />
+	</form>
+	<form action="/doctopdf">
+		<input type="submit" class="btn myborder btn-primary fs-2 p-3 mx-3" value="DOC TO PDF" />
+	</form>
+	<form action="/sheetTopdf">
+		<input type="submit" class="btn myborder btn-success fs-2 p-3 mx-3" value="CSV/XLSX TO PDF" />
+	</form>
 </div>
 
 
-                       <script src="javascript/bootstrap.bundle.min.js"></script>
-    </body>
+<script src="javascript/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
