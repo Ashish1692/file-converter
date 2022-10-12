@@ -282,7 +282,7 @@ app.post('/pptxtopdf',pptxtopdfupload.single('file'),(req,res) => {
 
 var storage1 = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads");
+    cb(null, "./public/uploads");
   },
   filename: function (req, file, cb) {
     cb(
@@ -356,7 +356,7 @@ app.post('/doctopdf',docxtopdfupload.single('file'),(req,res) => {
 
 var storage2 = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads");
+    cb(null, "./public/uploads");
   },
   filename: function (req, file, cb) {
     cb(
