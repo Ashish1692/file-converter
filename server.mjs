@@ -228,10 +228,10 @@ app.get('/pptxtopdf',(req,res) => {
 
 const pptxtopdf = function (req, file, callback) {
   var ext = path.extname(file.originalname);
-  console.log("file"+path.resolve(file))
+  // console.log("file"+path.resolve(file))
   if (
-    ext !== ".docx" &&
-    ext !== ".doc"
+    ext !== ".pptx" &&
+    ext !== ".ppt"
 
   ) {
     return callback("This Extension is not supported");
@@ -374,8 +374,8 @@ app.get('/sheetTopdf',(req,res) => {
 const sheetTopdf = function (req, file, callback) {
   var ext = path.extname(file.originalname);
   if (
-    ext !== ".docx" &&
-    ext !== ".doc"
+    ext !== ".xlsx" &&
+    ext !== ".csv"
 
   ) {
     return callback("This Extension is not supported");
